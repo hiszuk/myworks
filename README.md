@@ -8,6 +8,10 @@
 
 テンプレートを選び開発物の紹介文と紹介画像を投稿するだけでデザインされたポートフォリオが完成します。
 
+## ライブデモ
+
+実際に動作する画面はこちらです。➡️　[MY WORKS](https://myworks-services.com)
+
 ## ソースコードについて
 
 ここに公開しているソースコードは、自由にダンロードし改変しても構いません。
@@ -34,37 +38,8 @@
 - [Resend](https://resend.com/)へのアカウント登録とcloudflareに登録した[ドメインの登録](https://resend.com/docs/dashboard/domains/introduction)と[API KEYの発行](https://resend.com/docs/dashboard/api-keys/introduction)
 - [cloudflareでのドメイン設定追加](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/?mkt_tok=NzEzLVhTQy05MTgAAAGTjjG8kGOAxmwpJB3t6-7IfYqIU2Uo-kQx5QW7cBQV4fvRRNMpOZtqVnJ8S-oMtc9wWFOk5beaZ8ga3FjL8Aptbjj0LAkrhWYzrz046pvOxwteTV7LPs5L#add-your-domain-to-resend)
 
-### 環境変数の設定
+## 設定手順
 
-ローカル開発はプロジェクトのルートフォルダに`.dev.vars`を作成します。
+ソースコードをgit cloneしてからローカルで動作確認し、cloudflareにデプロイ・各種設定を行い、最終的に問い合わせメールを送信するまでの手順をwikiにまとめていますので、そちらを参照してください。
 
-```
-GOOGLE_CLIENT_ID=xxxxxxxxxx-xxxxxxxxxxxxxxxxx.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=XXXXXXXXXXXXXXXXXXX
-GOOGLE_CLIENT_CALLBACK_URL=http://localhost:8788/api/auth/google/callback
-SESSION_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-RESEND_ID=00000000-XXXX-XXXX-XXXX-000000000000
-RESEND_API_KEY=re_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-プロダクション・プレビュー用にそれぞれ上記で設定する[環境変数の設定](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables)が必要です。
-
-![environment](assets/environment.png)
-
-ローカル環境にcloudflare D1, R2の環境を構築するためにはプロジェクトルートフォルダに`wrangler.toml`が必要です。
-
-```
-[[d1_databases]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "myworks-db"
-database_id = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-migrations_dir = "app/drizzle/migrations"
-
-[[r2_buckets]]
-binding = "R2"
-bucket_name = "myworks-storage"
-```
-
-`wrangler.toml`はローカル開発に必要なだけですのでgit管理から外しています。D1, R2はcloudflareダッシュボードからのバインディングが必要です。
-
-![bindings](assets/bindings.png)
+[MY WORKS 設定手順](https://github.com/hiszuk/myworks/wiki)
