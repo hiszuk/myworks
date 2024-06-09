@@ -4,6 +4,8 @@
 
 ![hero](assets/myworks.png)
 
+[Web illustrations by Storyset](https://storyset.com/web)
+
 ## コンセプト
 
 テンプレートを選び開発物の紹介文と紹介画像を投稿するだけでデザインされたポートフォリオが完成します。
